@@ -5,9 +5,11 @@ const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 const clickSound = document.getElementById("click-sound");
 
-// Guardamos la posición original del botón rojo
-const originalBtn2X = btn2.offsetLeft;
-const originalBtn2Y = btn2.offsetTop;
+// Guarda la posición inicial del botón en el HTML
+const initialBtn1X = btn1.offsetLeft;
+const initialBtn1Y = btn1.offsetTop;
+const initialBtn2X = btn2.offsetLeft;
+const initialBtn2Y = btn2.offsetTop;
 
 // Lista de preguntas
 const questions = [
@@ -85,11 +87,16 @@ function moveButtonRandomly(button) {
     button.style.top = `${y}px`;
 }
 
-// Restablece btn2 a su posición original después de una pregunta troll
+// Restaura la posición inicial exacta del HTML
 function resetButtonPosition(button) {
     button.style.position = "absolute";
-    button.style.left = `${originalBtn2X}px`;
-    button.style.top = `${originalBtn2Y}px`;
+    if (button === btn1) {
+        button.style.left = `${initialBtn1X}px`;
+        button.style.top = `${initialBtn1Y}px`;
+    } else {
+        button.style.left = `${initialBtn2X}px`;
+        button.style.top = `${initialBtn2Y}px`;
+    }
 }
 
 // Iniciar la primera pregunta

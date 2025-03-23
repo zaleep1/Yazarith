@@ -29,8 +29,9 @@ body {
 
 #question-container {
   position: absolute;
-  top: 50%; /* Ajusta este valor según lo necesites */
+  top: 50px; /* Ajusta la distancia desde la parte superior del corazón */
   left: 50%;
+  transform: translateX(-50%); /* Solo centramos horizontalmente */
   text-align: center;
   font-size: 0.6em; /* Ajusta el tamaño si es necesario */
   z-index: 1;
@@ -39,8 +40,9 @@ body {
 
 #question {
   position: absolute;
-  top: 50%; /* Ajusta este valor según lo necesites */
+  top: 50px; /* Ajusta la distancia desde la parte superior del corazón */
   left: 50%;
+  transform: translateX(-50%); /* Solo centramos horizontalmente */
   text-align: center;
   font-size: 0.6em; /* Ajusta el tamaño si es necesario */
   z-index: 1;

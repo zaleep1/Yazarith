@@ -29,8 +29,6 @@ body {
 
 #question-container {
   position: relative;
-  width: 100px;
-  height: 90px;
   text-align: center;
   font-size: 0.4em; /* Ajusta el tamaño si es necesario */
   z-index: 2;

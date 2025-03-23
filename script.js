@@ -72,13 +72,13 @@ function changeQuestion(nextIndex) {
         }
     }, 200);
 
-    btn1.onclick = () => {
-        if (currentQuestion === 9) { // Si es la última pregunta
-            window.location.href = "function-heart.html"; // Redirigir a la página del corazón
-        } else {
-            changeQuestion(q.next1);
-        }
-    };
+btn1.onclick = () => {
+    if (questions[currentQuestion].number === 10) { // Verifica si es la pregunta 10
+        window.location.href = "function-heart.html";
+    } else {
+        changeQuestion(questions[currentQuestion].next1);
+    }
+};
     btn2.onclick = () => {
         if (q.isTroll) {
             moveButtonRandomly(btn2);

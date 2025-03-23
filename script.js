@@ -1,106 +1,119 @@
-let questions = [
-    { text: "Esta bien", image: "", left: "", right: "", nextLeft: null, nextRight: null, autoNext: 5 },
-    { text: "Hola", image: "assets/hola.png", left: "Hola", right: "Adios", nextLeft: 3, nextRight: 2 },
-    { text: "Ya no me quieles", image: "assets/triste.png", left: "", right: "", nextLeft: null, nextRight: null },
-    { text: "¿Cómo te sientes el día de hoy?", image: "assets/dia.png", left: "Bien", right: "Mal", nextLeft: 5, nextRight: 4 },
-    { text: "Recuerda que estoy aquí para ti y si necesitas podrías decirme el por qué", image: "assets/apoyo.png", left: "Está bien, lo haré", right: "Lo pensaré", nextLeft: 5, nextRight: 0 },
-    { text: "¿Cómo te ves el día de hoy?", image: "assets/autoestima.png", left: "Linda", right: "Fea", nextLeft: 6, nextRight: null }
-];
+e = [];// trails
+h = [];// heart path
+O = c.width = innerWidth;
+Q = c.height = innerHeight;
 
-let questionElement = document.getElementById("question");
-let questionImage = document.getElementById("question-image");
-let leftButton = document.getElementById("left-button");
-let rightButton = document.getElementById("right-button");
-let clickSound = document.getElementById("click-sound");
-
-function nextQuestion(index) {
-    let q = questions[index];
-
-    questionElement.innerText = q.text;
-    questionImage.src = q.image;
-    leftButton.innerText = q.left || "";
-    rightButton.innerText = q.right || "";
-    leftButton.onclick = q.nextLeft !== null ? () => nextQuestion(q.nextLeft) : null;
-    rightButton.onclick = q.nextRight !== null ? () => nextQuestion(q.nextRight) : null;
-
-    leftButton.style.display = q.left ? "inline-block" : "none";
-    rightButton.style.display = q.right ? "inline-block" : "none";
-
-    clickSound.play();
-
-    if (index === 5) {
-        document.body.innerHTML += '<div class="fullscreen-block"></div>';
-    }
-
-    if (index === 0) {
-        setTimeout(() => nextQuestion(5), 5000);
-    }
+v = 32; // num trails, num particles per trail & num nodes in heart path
+M = Math;
+R = M.random;
+C = M.cos;
+Y = 6.3;// close to 44/7 or Math.PI * 2 - 6.3 seems is close enough. 
+for( i = 0; i <Y; i+= .2 ) { // calculate heart nodes, from http://mathworld.wolfram.com/HeartCurve.html
+	h.push([
+		O/2 + 180*M.pow(M.sin(i), 3),
+		Q/2 + 10 * (-(15*C(i) - 5*C(2*i) - 2*C(3*i) - C(4*i)))
+	])
 }
 
+i = 0;
+while (i < v ) {
 
+	x = R() * O;
+	y = R() * Q;
+	//r = R() * 50 + 200;
+	//b = R() * r;
+	//g = R() * b;
 
-// ---- Código del Corazón ----
-let e = [], h = [], O = c.width = innerWidth, Q = c.height = innerHeight;
-let v = 32, M = Math, R = M.random, C = M.cos, Y = 6.3;
+	H = i/v * 80 + 280;
+	S = R() * 40 + 60;
+	B = R() * 60 + 20;
 
-for (let i = 0; i < Y; i += .2) {
-    h.push([O / 2 + 180 * M.pow(M.sin(i), 3), Q / 2 + 10 * (-(15 * C(i) - 5 * C(2 * i) - 2 * C(3 * i) - C(4 * i)))]);
+	f = []; // create new trail
+
+	k = 0;
+	while ( k < v ) { 
+		f[k++] = { // create new particle
+			x : x, // position 
+			y : y,
+			X : 0, // velocity
+			Y : 0,
+			R : (1 - k/v)  + 1, // radius
+			S : R() + 1, // acceleration 
+			q : ~~(R() * v), // target node on heart path
+			//D : R()>.5?1:-1,
+			D : i%2*2-1, // direction around heart path
+			F : R() * .2 + .7, // friction
+			//f : "rgba(" + ~~r + "," + ~~g + "," + ~~b + ",.1)"
+			f : "hsla("+~~H+","+~~S+"%,"+~~B+"%,.1)" // colour
+      
+		}
+	}
+
+	e[i++] = f; // dots are a 2d array of trails x particles
 }
 
-for (let i = 0; i < v; i++) {
-    let x = R() * O, y = R() * Q, H = i / v * 80 + 280, S = R() * 40 + 60, B = R() * 60 + 20;
-    let f = [];
-    
-    for (let k = 0; k < v; k++) {
-        f[k] = { x, y, X: 0, Y: 0, R: (1 - k / v) + 1, S: R() + 1, q: ~~(R() * v), D: i % 2 * 2 - 1, F: R() * .2 + .7, f: `hsla(${~~H},${~~S}%,${~~B}%,.1)` };
-    }
-    e[i] = f;
+function render(_) { // draw particle
+	a.fillStyle = _.f;
+	a.beginPath();
+	a.arc(_.x, _.y, _.R, 0, Y, 1);
+	a.closePath();
+	a.fill();
 }
 
-function render(_) {
-    let a = c.getContext('2d');
-    a.fillStyle = _.f;
-    a.beginPath();
-    a.arc(_.x, _.y, _.R, 0, Y, 1);
-    a.closePath();
-    a.fill();
-}
+function loop(){
 
-function loop() {
-    let a = c.getContext('2d');
-    a.fillStyle = "rgba(0,0,0,.2)";
-    a.fillRect(0, 0, O, Q);
+	a.fillStyle = "rgba(0,0,0,.2)"; // clear screen
+	a.fillRect(0,0,O,Q);
 
-    for (let i = 0; i < v; i++) {
-        let f = e[i], u = f[0], q = h[u.q], D = u.x - q[0], E = u.y - q[1], G = M.sqrt((D * D) + (E * E));
+	i = v;
+	while (i--) {
 
-        if (G < 10) {
-            if (R() > .95) u.q = ~~(R() * v);
-            else {
-                if (R() > .99) u.D *= -1;
-                u.q += u.D;
-                u.q %= v;
-                if (u.q < 0) u.q += v;
-            }
-        }
+		f = e[ i ]; // get worm
+		u = f[ 0 ]; // get 1st particle of worm
+		q = h[ u.q ]; // get current node on heart path
+		D = u.x - q[0]; // calc distance
+		E = u.y - q[1];
+		G = M.sqrt( (D * D) + (E * E) );
+		
+		if ( G < 10 ) { // has trail reached target node?
+			if (R() > .95 ) { // randomly send a trail elsewhere
+				u.q = ~~(R() * v);
+			} else {
+				if ( R() > .99) u.D *= -1; // randomly change direction
+				u.q += u.D;
+				u.q %= v;
+				if ( u.q < 0 ) u.q += v;
+			 }
+		}
 
-        u.X += -D / G * u.S;
-        u.Y += -E / G * u.S;
-        u.x += u.X;
-        u.y += u.Y;
+		u.X += -D / G * u.S; // calculate velocity
+		u.Y += -E / G * u.S;
 
-        render(u);
+		u.x += u.X; // apply velocity
+		u.y += u.Y;
 
-        u.X *= u.F;
-        u.Y *= u.F;
+		render(u); // draw the first particle
 
-        for (let k = 0; k < v - 1; k++) {
-            let T = f[k], N = f[k + 1];
-            N.x -= (N.x - T.x) * .7;
-            N.y -= (N.y - T.y) * .7;
-            render(N);
-        }
-    }
-    requestAnimationFrame(loop);
-}
-loop();
+		u.X *= u.F; // apply friction
+		u.Y *= u.F;
+
+		k = 0;
+		while ( k < v-1 ) { // loop through remaining dots
+			
+			T = f[ k ]; // this particle
+			N = f[ ++k ]; // next particle
+
+			N.x -= (N.x - T.x) * .7; // use zenos paradox to create trail
+			N.y -= (N.y - T.y) * .7;
+
+			render(N);
+
+		}
+
+	}
+}; // eo loop()
+
+(function doit(){
+	requestAnimationFrame(doit);
+	loop();
+}());

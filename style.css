@@ -30,12 +30,9 @@ body {
 
 #question {
   position: absolute;
-  top: 50%; /* Ajusta para centrar en la parte superior del corazón */
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centrar perfectamente */
+  top: 500px; /* Ajusta para moverlo verticalmente */
   font-size: 16px;
   text-align: center;
-  width: 100%;
 }
 
 

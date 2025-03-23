@@ -43,7 +43,6 @@ function changeQuestion(nextIndex) {
 
     questionText.classList.remove("fade-in");
     questionImg.classList.remove("fade-in");
-    questionNumber.classList.remove("fade-in");
 
     setTimeout(() => {
         questionText.textContent = q.text;

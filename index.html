@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heart Quiz</title>
+<html lang="eng">
+	<head>
+		<title>heart</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+		<meta charset="utf-8">
+	</head>
+	<body>
+      <br>
+    <div id="obal">
+      <canvas id="c"></canvas>
+      <script>
+        var b = document.body;
+        var c = document.getElementsByTagName('canvas')[0];
+        var a = c.getContext('2d');
+        document.body.clientWidth; 
+      </script>
+    </div>
     <div id="heart-container">
         <div id="heart">
             <span id="question" class="fade-in">Hola</span>
@@ -18,5 +27,6 @@
         <button onclick="answer('Adios')">Adios</button>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
+      
 </html>

@@ -31,7 +31,6 @@ body {
   position: relative;
   top: 50%; /* Ajusta este valor según lo necesites */
   left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   font-size: 0.6em; /* Ajusta el tamaño si es necesario */
   z-index: 1;
@@ -42,7 +41,6 @@ body {
   position: relative;
   top: 50%; /* Ajusta este valor según lo necesites */
   left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   font-size: 0.6em; /* Ajusta el tamaño si es necesario */
   z-index: 1;

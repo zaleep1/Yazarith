@@ -9,9 +9,10 @@ const bgMusic = document.getElementById("bg-music");
 const questions = [
     { text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1 },
     { text: "Ya no me quieres...", img: "assets/final.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 3, next2: 0 },
-    { text: "¿Como andas el dia de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 5, next2: 4 },
+    { text: "¿Como andas el dia de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 4, next2: 3 },
+    { text: "Recuerda que estoy aqui para ti y puedes contarme el porque", img: "assets/triste.png", btn1: "Esta bien, lo hare", btn2: "Lo pensare", next1: 4, next2: 4 },
     { text: "¿Como te ves el dia de hoy?", img: "assets/3.png", btn1: "Linda", btn2: "Fea", next1: 5, next2: 5 },
-    { text: "Bueno... Adiós 😭", img: "assets/triste.png", btn1: "Reiniciar", btn2: "Cerrar", next1: 0, next2: null }
+    { text: "Como siempre 💖", img: "assets/triste.png", btn1: "Que lindo", btn2: "Adios", next1: 0, next2: null }
 ];
 
 // Estado actual

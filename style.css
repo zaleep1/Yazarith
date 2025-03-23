@@ -27,7 +27,7 @@ body {
   }
 }
 
-#question {
+#question-container {
   position: absolute;
   top: 20%; /* Ajusta este valor según lo necesites */
   left: 50%;

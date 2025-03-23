@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="eng">
-	<head>
-		<title>heart</title>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta importante</title>
     <link rel="stylesheet" href="style.css">
-		<meta charset="utf-8">
-	</head>
-	<body>
-      <br>
-    <div id="obal">
-      <canvas id="c"></canvas>
-      <div id="question-container">
-            <span id="question" class="fade-in">Hola</span>
-      </div>
-      <script>
-        var b = document.body;
-        var c = document.getElementsByTagName('canvas')[0];
-        var a = c.getContext('2d');
-        document.body.clientWidth; 
-      </script>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Eres gay?</h1>
+        <img src="assets/inicio.png" id="pregunta-img" alt="Pregunta">
+        <div class="buttons">
+          <button id="yes">Yes</button>
+          <button id="no">No</button>
+        </div>
+        <img src="assets/final.png" id="final-img" class="hidden" alt="Lo sabía">
     </div>
+    <audio id="click-sound" src="assets/click.mp3"></audio>
+    <audio id="bg-music" src="assets/musica.mp3" autoplay loop></audio>
     <script src="script.js"></script>
-  </body>
-      
+</body>
 </html>

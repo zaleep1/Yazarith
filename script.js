@@ -46,9 +46,9 @@ function changeQuestion(nextIndex) {
         btn2.textContent = q.btn2;
 
         if (q.isTroll) {
-            enableTrollMode(btn2); // Activa el botón troll si la pregunta lo requiere
+            enableTrollMode(btn2);
         } else {
-            resetButton(btn2); // Restaura el botón normal
+            resetButton(btn2);
         }
 
         setTimeout(() => {
@@ -72,10 +72,12 @@ function changeQuestion(nextIndex) {
     };
 }
 
-// Función para mover el botón a una posición aleatoria
+// Función para mover el botón a una posición aleatoria cuando intentan hacer clic en él
 function moveButtonRandomly(button) {
-    const x = Math.random() * (window.innerWidth - button.clientWidth);
-    const y = Math.random() * (window.innerHeight - button.clientHeight);
+    const maxX = window.innerWidth - button.clientWidth - 20;
+    const maxY = window.innerHeight - button.clientHeight - 20;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
     button.style.position = "absolute";
     button.style.left = `${x}px`;
     button.style.top = `${y}px`;
@@ -83,12 +85,12 @@ function moveButtonRandomly(button) {
 
 // Función para activar el modo troll en el botón
 function enableTrollMode(button) {
-    button.style.position = "absolute"; // Hace que el botón pueda moverse
+    button.style.position = "absolute";
 }
 
 // Función para restaurar el botón a su posición normal
 function resetButton(button) {
-    button.style.position = "";
+    button.style.position = "static";
     button.style.left = "";
     button.style.top = "";
 }

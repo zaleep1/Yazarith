@@ -1,8 +1,3 @@
-let images = ["1.png", "2.png", "3.png", "4.png", "5.png"];
-let effects = ["fade-in", "slide-in", "zoom-in"];
-let currentIndex = 0;
-let imgElement = document.getElementById("image");
-let clickSound = document.getElementById("click-sound");
 let questions = [
     { text: "Esta bien", left: "", right: "", nextLeft: null, nextRight: null, autoNext: 5 },
     { text: "Hola", left: "Hola", right: "Adios", nextLeft: 3, nextRight: 2 },
@@ -39,20 +34,7 @@ function nextQuestion(index) {
         setTimeout(() => nextQuestion(5), 5000);
     }
 }
-function changeImage(next = true) {
-    currentIndex = next ? (currentIndex + 1) % images.length : (currentIndex - 1 + images.length) % images.length;
-    let effect = effects[Math.floor(Math.random() * effects.length)];
 
-    imgElement.className = "";
-    void imgElement.offsetWidth; // Reiniciar animación
-    imgElement.classList.add(effect);
-
-    imgElement.src = `assets/${images[currentIndex]}`;
-    clickSound.play();
-}
-
-document.getElementById("next").addEventListener("click", () => changeImage(true));
-document.getElementById("prev").addEventListener("click", () => changeImage(false));
 
 // ---- Código del Corazón ----
 let e = [], h = [], O = c.width = innerWidth, Q = c.height = innerHeight;

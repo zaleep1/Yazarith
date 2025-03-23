@@ -15,8 +15,9 @@ const questions = [
     { number: 5, text: "¿Cómo te ves el día de hoy?", img: "assets/4.png", btn1: "Linda", btn2: "Fea", next1: 5, next2: null, isTroll: true },
     { number: 6, text: "Como siempre 💖", img: "assets/5.png", btn1: "💖", btn2: "🖕", next1: 6, next2: 6, isTroll: false },
     { number: 7, text: "¿Y al final si iremos a cine?", img: "assets/5s.png", btn1: "Si", btn2: "No tengo tiempo", next1: 7, next2: 8, isTroll: false },
-    { number: 8, text: "Esta bien, espero tu mensaje 😺", img: "assets/final.png", btn1: ".", btn2: ".", next1: null, next2: null, isTroll: false },
-    { number: 9, text: "Vale, entiendo 😔", img: "assets/final.png", btn1: ".", btn2: ".", next1: null, next2: null, isTroll: false }
+    { number: 8, text: "Esta bien, espero tu mensaje 😺", img: "assets/final.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
+    { number: 9, text: "Vale, entiendo 😔", img: "assets/final.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
+    { number: 10, text: "Espero que tengas un lindo dia", img: "assets/final.png", btn1: "Dale", btn2: "No", next1: null, next2: null, isTroll: true }
 ];
 
 // Estado actual
@@ -27,6 +28,7 @@ let isTransitioning = false;
 const btn1OriginalPosition = { left: btn1.offsetLeft, top: btn1.offsetTop };
 const btn2OriginalPosition = { left: btn2.offsetLeft, top: btn2.offsetTop };
 
+// Función para cambiar la pregunta con delay
 // Función para cambiar la pregunta con delay
 function changeQuestion(nextIndex) {
     if (nextIndex === null || isTransitioning) return;
@@ -51,7 +53,6 @@ function changeQuestion(nextIndex) {
         btn1.textContent = q.btn1;
         btn2.textContent = q.btn2;
 
-        // Restaurar la posición original de los botones
         resetButtonPosition(btn1, btn1OriginalPosition);
         resetButtonPosition(btn2, btn2OriginalPosition);
 
@@ -64,6 +65,15 @@ function changeQuestion(nextIndex) {
         questionText.classList.add("fade-in");
         questionImg.classList.add("fade-in");
         questionNumber.classList.add("fade-in");
+
+        // Si es un mini mensaje, cambiar automáticamente después de 5 segundos
+        if (q.isMiniMsg) {
+            setTimeout(() => {
+                if (currentQuestion === nextIndex) {
+                    changeQuestion(q.next1);
+                }
+            }, 5000);
+        }
     }, 200);
 
     btn1.onclick = () => changeQuestion(q.next1);
@@ -75,6 +85,8 @@ function changeQuestion(nextIndex) {
         }
     };
 }
+
+
 
 // Función para mover el botón aleatoriamente
 function resetButtonPosition(button, originalPosition) {
@@ -99,3 +111,4 @@ function moveButtonRandomly(button) {
 // Iniciar la primera pregunta
 btn1.onclick = () => changeQuestion(questions[0].next1);
 btn2.onclick = () => changeQuestion(questions[0].next2);
+

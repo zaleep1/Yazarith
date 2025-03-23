@@ -45,12 +45,6 @@ function changeQuestion(nextIndex) {
         btn1.textContent = q.btn1;
         btn2.textContent = q.btn2;
 
-        if (q.isTroll) {
-            enableTrollMode(btn2);
-        } else {
-            resetButton(btn2);
-        }
-
         setTimeout(() => {
             isTransitioning = false;
             btn1.disabled = false;
@@ -72,7 +66,7 @@ function changeQuestion(nextIndex) {
     };
 }
 
-// Función para mover el botón a una posición aleatoria cuando intentan hacer clic en él
+// Función para mover el botón cuando se presiona
 function moveButtonRandomly(button) {
     const maxX = window.innerWidth - button.clientWidth - 20;
     const maxY = window.innerHeight - button.clientHeight - 20;
@@ -81,18 +75,6 @@ function moveButtonRandomly(button) {
     button.style.position = "absolute";
     button.style.left = `${x}px`;
     button.style.top = `${y}px`;
-}
-
-// Función para activar el modo troll en el botón
-function enableTrollMode(button) {
-    button.style.position = "absolute";
-}
-
-// Función para restaurar el botón a su posición normal
-function resetButton(button) {
-    button.style.position = "static";
-    button.style.left = "";
-    button.style.top = "";
 }
 
 // Iniciar la primera pregunta

@@ -27,25 +27,16 @@ body {
   }
 }
 
-#question-container {
-  position: relative;
-  top: 50px; /* Ajusta la distancia desde la parte superior del corazón */
-  left: 50px;
-  text-align: center;
-  font-size: 0.6em; /* Ajusta el tamaño si es necesario */
-  z-index: 1;
-  color: white; /* Asegúrate de que sea visible */
-}
 
 #question {
   position: relative;
-  top: 50px; /* Ajusta la distancia desde la parte superior del corazón */
-  left: 50px;
+  top: -450px; /* Ajusta esto para moverlo hacia arriba o abajo */
+  display: block;
   text-align: center;
-  font-size: 0.6em; /* Ajusta el tamaño si es necesario */
-  z-index: 1;
-  color: white; /* Asegúrate de que sea visible */
+  font-size: 16px;
+  left: 3%;
 }
+
 
 #heart {
   position: relative;

@@ -28,6 +28,9 @@ body {
 }
 
 #question-container {
+  top: 10%; /* Ajusta este valor según lo necesites */
+  left: 50%;
+  transform: translate(-50%, -50%);
   position: relative;
   text-align: center;
   font-size: 0.4em; /* Ajusta el tamaño si es necesario */

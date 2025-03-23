@@ -63,13 +63,13 @@ function changeQuestion(nextIndex) {
         questionNumber.classList.add("fade-in");
 
         // Si es un mini mensaje, cambiar automáticamente después de 5 segundos
-        if (q.isMiniMsg) {
-            setTimeout(() => {
-                if (currentQuestion === nextIndex) {
-                    changeQuestion(q.next1);
-                }
-            }, 5000);
+if (q.isMiniMsg) {
+    setTimeout(() => {
+        if (currentQuestion === nextIndex) { // Verifica que siga en la misma pregunta
+            changeQuestion(questions[currentQuestion].next1); // Usa el índice actualizado
         }
+    }, 5000);
+}
     }, 200);
 
 btn1.onclick = () => {

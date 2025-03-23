@@ -16,7 +16,7 @@ const questions = [
     { number: 7, text: "¿Y al final si gustas ir a cine?", img: "assets/5s.png", btn1: "Si", btn2: "No tengo tiempo", next1: 7, next2: 8, isTroll: false },
     { number: 8, text: "Esta bien, espero tu mensaje 😺", img: "assets/2.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
     { number: 9, text: "Vale, entiendo 😔", img: "assets/triste.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
-    { number: 10, text: "Espero que tengas un lindo dia", img: "assets/final.png", btn1: "Dale", btn2: "No", next1: 10, next2: null, isTroll: true }
+    { number: 10, text: "Espero que tengas un lindo día", img: "assets/final.png", btn1: "Dale", btn2: "No", next1: 10, next2: null, isTroll: true }
 ];
 
 // Estado actual
@@ -26,7 +26,6 @@ let isTransitioning = false;
 // Guardar la posición original de los botones
 const btn1OriginalPosition = { left: btn1.offsetLeft, top: btn1.offsetTop };
 const btn2OriginalPosition = { left: btn2.offsetLeft, top: btn2.offsetTop };
-
 
 function changeQuestion(nextIndex) {
     if (nextIndex === null || isTransitioning) return;
@@ -60,25 +59,25 @@ function changeQuestion(nextIndex) {
 
         questionText.classList.add("fade-in");
         questionImg.classList.add("fade-in");
-        questionNumber.classList.add("fade-in");
 
         // Si es un mini mensaje, cambiar automáticamente después de 5 segundos
-if (q.isMiniMsg) {
-    setTimeout(() => {
-        if (currentQuestion === nextIndex) { // Verifica que siga en la misma pregunta
-            changeQuestion(questions[currentQuestion].next1); // Usa el índice actualizado
+        if (q.isMiniMsg) {
+            setTimeout(() => {
+                if (currentQuestion === nextIndex) { // Verifica que siga en la misma pregunta
+                    changeQuestion(questions[currentQuestion].next1); // Usa el índice actualizado
+                }
+            }, 5000);
         }
-    }, 5000);
-}
     }, 200);
 
-btn1.onclick = () => {
-    if (questions[currentQuestion].number === 10) { // Verifica si es la pregunta 10
-        window.location.href = "https://zaleep1.github.io/Yazarith/function-heart.html";
-    } else {
-        changeQuestion(questions[currentQuestion].next1);
-    }
-};
+    btn1.onclick = () => {
+        if (questions[currentQuestion].number === 10) { // Verifica si es la pregunta 10
+            window.location.href = "https://zaleep1.github.io/Yazarith/function-heart.html";
+        } else {
+            changeQuestion(questions[currentQuestion].next1);
+        }
+    };
+    
     btn2.onclick = () => {
         if (q.isTroll) {
             moveButtonRandomly(btn2);
@@ -88,19 +87,7 @@ btn1.onclick = () => {
     };
 }
 
-
-
-
-// Función para mover el botón aleatoriamente
-function resetButtonPosition(button, originalPosition) {
-    if (button === btn2) {
-        button.style.position = "static"; // Restablece la distribución normal
-    }
-    button.style.left = "";
-    button.style.top = "";
-}
-
-// Función para mover btn2 aleatoriamente SOLO en preguntas troll
+// Función para mover el botón aleatoriamente SOLO en preguntas troll
 function moveButtonRandomly(button) {
     button.style.position = "absolute"; // Hacer que se mueva
     const maxX = window.innerWidth - button.clientWidth - 20;
@@ -109,6 +96,15 @@ function moveButtonRandomly(button) {
     const y = Math.random() * maxY;
     button.style.left = `${x}px`;
     button.style.top = `${y}px`;
+}
+
+// Función para reiniciar la posición de los botones
+function resetButtonPosition(button, originalPosition) {
+    if (button === btn2) {
+        button.style.position = "static"; // Restablece la distribución normal
+    }
+    button.style.left = "";
+    button.style.top = "";
 }
 
 // Iniciar la primera pregunta

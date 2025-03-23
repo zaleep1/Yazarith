@@ -5,11 +5,11 @@ const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 const clickSound = document.getElementById("click-sound");
 
-// Guarda la posición inicial del botón en el HTML
-const initialBtn1X = btn1.offsetLeft;
-const initialBtn1Y = btn1.offsetTop;
-const initialBtn2X = btn2.offsetLeft;
-const initialBtn2Y = btn2.offsetTop;
+// Guarda la posición inicial exacta de los botones en el HTML
+const initialBtn1X = btn1.getBoundingClientRect().left;
+const initialBtn1Y = btn1.getBoundingClientRect().top;
+const initialBtn2X = btn2.getBoundingClientRect().left;
+const initialBtn2Y = btn2.getBoundingClientRect().top;
 
 // Lista de preguntas
 const questions = [
@@ -52,6 +52,7 @@ function changeQuestion(nextIndex) {
         if (q.isTroll) {
             moveButtonRandomly(btn2);
         } else {
+            resetButtonPosition(btn1);
             resetButtonPosition(btn2);
         }
 

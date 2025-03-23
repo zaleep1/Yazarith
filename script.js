@@ -16,7 +16,7 @@ const questions = [
     { number: 6, text: "Como siempre 💖", img: "assets/5.png", btn1: "💖", btn2: "🖕", next1: 6, next2: 6, isTroll: false },
     { number: 7, text: "¿Y al final si iremos a cine?", img: "assets/5s.png", btn1: "Si", btn2: "No tengo tiempo", next1: 7, next2: 8, isTroll: false },
     { number: 8, text: "Esta bien, espero tu mensaje 😺", img: "assets/final.png", btn1: ".", btn2: ".", next1: null, next2: null, isTroll: false },
-    { number: 8, text: "Vale, entiendo 😔", img: "assets/final.png", btn1: ".", btn2: ".", next1: null, next2: null, isTroll: false }
+    { number: 9, text: "Vale, entiendo 😔", img: "assets/final.png", btn1: ".", btn2: ".", next1: null, next2: null, isTroll: false }
 ];
 
 // Estado actual

@@ -63,8 +63,8 @@ function changeQuestion(nextIndex) {
         // Si es un mini mensaje, cambiar automáticamente después de 5 segundos
         if (q.isMiniMsg) {
             setTimeout(() => {
-                if (currentQuestion === nextIndex) { // Verifica que siga en la misma pregunta
-                    changeQuestion(questions[currentQuestion].next1); // Usa el índice actualizado
+                if (currentQuestion === nextIndex) {
+                    changeQuestion(q.next1);
                 }
             }, 5000);
         }

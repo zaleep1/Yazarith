@@ -3,7 +3,42 @@ let effects = ["fade-in", "slide-in", "zoom-in"];
 let currentIndex = 0;
 let imgElement = document.getElementById("image");
 let clickSound = document.getElementById("click-sound");
+let questions = [
+    { text: "Esta bien", left: "", right: "", nextLeft: null, nextRight: null, autoNext: 5 },
+    { text: "Hola", left: "Hola", right: "Adios", nextLeft: 3, nextRight: 2 },
+    { text: "Ya no me quieles", left: "", right: "", nextLeft: null, nextRight: null },
+    { text: "¿Cómo te sientes el día de hoy?", left: "Bien", right: "Mal", nextLeft: 5, nextRight: 4 },
+    { text: "Recuerda que estoy aquí para ti y si necesitas podrías decirme el por qué", left: "Está bien, lo haré", right: "Lo pensaré", nextLeft: 5, nextRight: 0 },
+    { text: "¿Cómo te ves el día de hoy?", left: "Linda", right: "Fea", nextLeft: 6, nextRight: null }
+];
 
+let questionElement = document.getElementById("question");
+let leftButton = document.getElementById("left-button");
+let rightButton = document.getElementById("right-button");
+let clickSound = document.getElementById("click-sound");
+
+function nextQuestion(index) {
+    let q = questions[index];
+
+    questionElement.innerText = q.text;
+    leftButton.innerText = q.left || "";
+    rightButton.innerText = q.right || "";
+    leftButton.onclick = q.nextLeft !== null ? () => nextQuestion(q.nextLeft) : null;
+    rightButton.onclick = q.nextRight !== null ? () => nextQuestion(q.nextRight) : null;
+
+    leftButton.style.display = q.left ? "inline-block" : "none";
+    rightButton.style.display = q.right ? "inline-block" : "none";
+
+    clickSound.play();
+
+    if (index === 5) {
+        document.body.innerHTML += '<div class="fullscreen-block"></div>';
+    }
+
+    if (index === 0) {
+        setTimeout(() => nextQuestion(5), 5000);
+    }
+}
 function changeImage(next = true) {
     currentIndex = next ? (currentIndex + 1) % images.length : (currentIndex - 1 + images.length) % images.length;
     let effect = effects[Math.floor(Math.random() * effects.length)];

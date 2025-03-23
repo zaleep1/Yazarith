@@ -77,12 +77,11 @@ function changeQuestion(nextIndex) {
 
     btn1.onclick = () => {
         if (currentQuestion === 10) { // Si es la última pregunta
-            window.open("function-heart.html", "_blank", "width=600,height=400");
+            window.location.href = "function-heart.html"; // Redirigir a la página del corazón
         } else {
             changeQuestion(q.next1);
         }
     };
-
     btn2.onclick = () => {
         if (q.isTroll) {
             moveButtonRandomly(btn2);

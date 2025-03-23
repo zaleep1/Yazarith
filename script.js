@@ -2,7 +2,7 @@ const questionElement = document.getElementById("question");
 const imageElement = document.getElementById("image");
 const buttonsContainer = document.getElementById("buttons");
 
-// Preguntas y rutas de imágenes
+// Datos de las preguntas
 const quizData = {
     "Hola": { nextQuestion: "3", image: "3.png" },
     "Adios": { nextQuestion: "2", image: "2.png" }
@@ -34,6 +34,7 @@ window.onload = () => {
     questionElement.classList.add("show");
     buttonsContainer.classList.add("show");
 };
+
 
 
 e = [];// trails

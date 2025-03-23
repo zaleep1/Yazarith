@@ -8,63 +8,82 @@ const bgMusic = document.getElementById("bg-music");
 
 // Lista de preguntas con imágenes y número de pregunta
 const questions = [
-    { number: 1, text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1 }, /* 0 */
+    { number: 1, text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1, isTroll: false }, 
 
-
-    { number: 2, text: "Ya no me quieres...", img: "assets/final.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 2, next2: 0 },
-    { number: 3, text: "¿Cómo andas el día de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 4, next2: 3 },
-    { number: 4, text: "Recuerda que estoy aquí para ti y puedes contarme el por qué", img: "assets/5s.png", btn1: "Está bien, lo haré", btn2: "Lo pensaré", next1: 4, next2: 4 },
-    { number: 5, text: "¿Cómo te ves el día de hoy?", img: "assets/4.png", btn1: "Linda", btn2: "Fea", next1: 5, next2: 5 },
-    { number: 6, text: "Como siempre 💖", img: "assets/5.png", btn1: "Qué lindo", btn2: "Adiós", next1: 0, next2: null }
+    { number: 2, text: "Ya no me quieres...", img: "assets/final.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 2, next2: 0, isTroll: false },
+    { number: 3, text: "¿Cómo andas el día de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 4, next2: 3, isTroll: false },
+    { number: 4, text: "Recuerda que estoy aquí para ti y puedes contarme el por qué", img: "assets/5s.png", btn1: "Está bien, lo haré", btn2: "Lo pensaré", next1: 4, next2: 4, isTroll: false },
+    { number: 5, text: "¿Cómo te ves el día de hoy?", img: "assets/4.png", btn1: "Linda", btn2: "Fea", next1: 5, next2: null, isTroll: true },
+    { number: 6, text: "Como siempre 💖", img: "assets/5.png", btn1: "Qué lindo", btn2: "Adiós", next1: 0, next2: null, isTroll: false }
 ];
 
 // Estado actual
 let currentQuestion = 0;
-let isTransitioning = false; // Variable para evitar clics rápidos
+let isTransitioning = false;
 
 // Función para cambiar la pregunta con delay
 function changeQuestion(nextIndex) {
-    if (nextIndex === null || isTransitioning) return; // Evita clics rápidos
+    if (nextIndex === null || isTransitioning) return;
 
-    isTransitioning = true; // Bloquea los botones temporalmente
+    isTransitioning = true;
     btn1.disabled = true;
     btn2.disabled = true;
 
     currentQuestion = nextIndex;
     const q = questions[currentQuestion];
 
-    // Sonido de clic
     clickSound.play();
 
-    // Efecto de desaparición
     questionText.classList.remove("fade-in");
     questionImg.classList.remove("fade-in");
     questionNumber.classList.remove("fade-in");
 
     setTimeout(() => {
-        // Cambia la pregunta después de un pequeño delay
         questionNumber.textContent = `Pregunta ${q.number}`;
         questionText.textContent = q.text;
         questionImg.src = q.img;
         btn1.textContent = q.btn1;
         btn2.textContent = q.btn2;
 
-        // Reactiva botones con un pequeño retraso para evitar doble clic
+        if (q.isTroll) {
+            makeButtonMove(btn2); // Hace que el botón 2 se mueva si es un botón troll
+        } else {
+            resetButton(btn2); // Restaura su posición si no es troll
+        }
+
         setTimeout(() => {
             isTransitioning = false;
             btn1.disabled = false;
             btn2.disabled = false;
-        }, 300); // Evita que se salten preguntas
+        }, 300);
 
-        // Efecto de reaparición
         questionText.classList.add("fade-in");
         questionImg.classList.add("fade-in");
         questionNumber.classList.add("fade-in");
-    }, 200); // Pequeño retraso para la animación
+    }, 200);
 
-    // Asignar nuevas funciones a los botones
     btn1.onclick = () => changeQuestion(q.next1);
     btn2.onclick = () => changeQuestion(q.next2);
+}
+
+// Función para hacer que el botón se mueva
+function makeButtonMove(button) {
+    button.style.position = "absolute";
+
+    button.onmouseover = () => {
+        const x = Math.random() * (window.innerWidth - button.clientWidth);
+        const y = Math.random() * (window.innerHeight - button.clientHeight);
+        button.style.left = `${x}px`;
+        button.style.top = `${y}px`;
+    };
+}
+
+// Función para restaurar el botón
+function resetButton(button) {
+    button.style.position = "";
+    button.style.left = "";
+    button.style.top = "";
+    button.onmouseover = null;
 }
 
 // Iniciar la primera pregunta

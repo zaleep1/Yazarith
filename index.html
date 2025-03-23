@@ -1,32 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Preguntas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <audio id="music" src="assets/musica.mp3" autoplay loop></audio>
-    <audio id="click-sound" src="assets/click.mp3"></audio>
-
-    <div id="heart">
-        <svg class="heart" viewBox="0 0 32 29.6">
-            <path d="M23.6,0C20.6,0,18,1.5,16,3.9C14,1.5,11.4,0,8.4,0C3.8,0,0,3.8,0,8.4c0,4.5,3.8,7.9,9.6,13.4C12.6,24.7,14,26,16,28
-            c2-2,3.4-3.3,6.4-6.2c5.8-5.5,9.6-8.9,9.6-13.4C32,3.8,28.2,0,23.6,0z"/>
-        </svg>
-        <div id="question-container">
-            <img id="question-image" src="" alt="">
-            <h1 id="question"></h1>
-        </div>
+<html lang="eng">
+	<head>
+		<title>heart</title>
+    <link rel="stylesheet" href="function-heart.css">
+		<meta charset="utf-8">
+	</head>
+	<body>
+      <br>
+    <div id="obal">
+      <canvas id="c"></canvas>
+      <script>
+        var b = document.body;
+        var c = document.getElementsByTagName('canvas')[0];
+        var a = c.getContext('2d');
+        document.body.clientWidth; 
+      </script>
     </div>
-
-    <div id="button-container">
-        <button id="left-button" class="green" onclick="nextQuestion(3)"></button>
-        <button id="right-button" class="red" onclick="nextQuestion(2)"></button>
-    </div>
-
-    <script src="script.js"></script>
-</body>
+    <script src="function-heart.js"></script>
+  </body>
+      
 </html>

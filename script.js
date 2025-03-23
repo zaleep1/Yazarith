@@ -6,6 +6,9 @@ const btn2 = document.getElementById("btn2");
 const clickSound = document.getElementById("click-sound");
 const bgMusic = document.getElementById("bg-music");
 
+// Guardamos la posición original del botón rojo (btn2)
+const originalBtn2Position = { left: btn2.style.left, top: btn2.style.top };
+
 // Lista de preguntas con imágenes y número de pregunta
 const questions = [
     { number: 1, text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1, isTroll: false }, 
@@ -45,6 +48,11 @@ function changeQuestion(nextIndex) {
         btn1.textContent = q.btn1;
         btn2.textContent = q.btn2;
 
+        // Restablecer el botón troll si la pregunta no es troll
+        if (!q.isTroll) {
+            resetButtonPosition(btn2);
+        }
+
         setTimeout(() => {
             isTransitioning = false;
             btn1.disabled = false;
@@ -75,6 +83,11 @@ function moveButtonRandomly(button) {
     button.style.position = "absolute";
     button.style.left = `${x}px`;
     button.style.top = `${y}px`;
+}
+
+// Función para restablecer la posición original del botón
+function resetButtonPosition(button) {
+    button.style.position = "static"; // Lo devuelve a su posición normal
 }
 
 // Iniciar la primera pregunta

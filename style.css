@@ -29,7 +29,7 @@ body {
 
 #question-container {
   position: absolute;
-  top: 0%; /* Ajusta este valor según lo necesites */
+  top: 50%; /* Ajusta este valor según lo necesites */
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -40,7 +40,7 @@ body {
 
 #question {
   position: absolute;
-  top: 0%; /* Ajusta este valor según lo necesites */
+  top: 50%; /* Ajusta este valor según lo necesites */
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;

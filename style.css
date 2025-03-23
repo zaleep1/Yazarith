@@ -28,7 +28,7 @@ body {
 }
 
 #question-container {
-  position: absolute;
+  position: relative;
   top: 50px; /* Ajusta la distancia desde la parte superior del corazón */
   left: 50%;
   transform: translateX(-50%); /* Solo centramos horizontalmente */
@@ -39,7 +39,7 @@ body {
 }
 
 #question {
-  position: absolute;
+  position: relative;
   top: 50px; /* Ajusta la distancia desde la parte superior del corazón */
   left: 50%;
   transform: translateX(-50%); /* Solo centramos horizontalmente */

@@ -29,19 +29,21 @@ body {
 
 
 #question {
-  position: relative;
-  top: -450px; /* Ajusta esto para moverlo hacia arriba o abajo */
-  display: block;
-  text-align: center;
+  position: absolute;
+  top: 50%; /* Ajusta para centrar en la parte superior del corazón */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrar perfectamente */
   font-size: 16px;
-  left: 3%;
+  text-align: center;
+  width: 100%;
 }
 
 
 #heart {
-  position: relative;
-  width: 100px;
-  height: 90px;
+  position: relative; /* Contenedor relativo para posicionar elementos dentro */
+  width: 200px; /* Ajusta según el tamaño del corazón */
+  height: 180px; /* Ajusta según el tamaño del corazón */
+  margin: auto;
   text-align: center;
   font-size: 16px;
   position: relative;

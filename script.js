@@ -9,7 +9,6 @@ const bgMusic = document.getElementById("bg-music");
 // Lista de preguntas con imágenes y número de pregunta
 const questions = [
     { number: 1, text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1, isTroll: false }, 
-
     { number: 2, text: "Ya no me quieres...", img: "assets/final.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 2, next2: 0, isTroll: false },
     { number: 3, text: "¿Cómo andas el día de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 4, next2: 3, isTroll: false },
     { number: 4, text: "Recuerda que estoy aquí para ti y puedes contarme el por qué", img: "assets/5s.png", btn1: "Está bien, lo haré", btn2: "Lo pensaré", next1: 4, next2: 4, isTroll: false },
@@ -20,6 +19,10 @@ const questions = [
 // Estado actual
 let currentQuestion = 0;
 let isTransitioning = false;
+
+// Guardar la posición original de los botones
+const btn1OriginalPosition = { left: btn1.offsetLeft, top: btn1.offsetTop };
+const btn2OriginalPosition = { left: btn2.offsetLeft, top: btn2.offsetTop };
 
 // Función para cambiar la pregunta con delay
 function changeQuestion(nextIndex) {
@@ -45,6 +48,10 @@ function changeQuestion(nextIndex) {
         btn1.textContent = q.btn1;
         btn2.textContent = q.btn2;
 
+        // Restaurar la posición original de los botones
+        resetButtonPosition(btn1, btn1OriginalPosition);
+        resetButtonPosition(btn2, btn2OriginalPosition);
+
         setTimeout(() => {
             isTransitioning = false;
             btn1.disabled = false;
@@ -66,7 +73,7 @@ function changeQuestion(nextIndex) {
     };
 }
 
-// Función para mover el botón cuando se presiona
+// Función para mover el botón aleatoriamente
 function moveButtonRandomly(button) {
     const maxX = window.innerWidth - button.clientWidth - 20;
     const maxY = window.innerHeight - button.clientHeight - 20;
@@ -75,6 +82,13 @@ function moveButtonRandomly(button) {
     button.style.position = "absolute";
     button.style.left = `${x}px`;
     button.style.top = `${y}px`;
+}
+
+// Función para restaurar la posición original de los botones
+function resetButtonPosition(button, originalPosition) {
+    button.style.position = "absolute";
+    button.style.left = `${originalPosition.left}px`;
+    button.style.top = `${originalPosition.top}px`;
 }
 
 // Iniciar la primera pregunta

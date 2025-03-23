@@ -31,7 +31,7 @@ body {
   top: 10%; /* Ajusta este valor según lo necesites */
   left: 50%;
   transform: translate(-50%, -50%);
-  position: relative;
+  position: absolute;
   text-align: center;
   font-size: 0.4em; /* Ajusta el tamaño si es necesario */
   z-index: 2;

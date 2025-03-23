@@ -9,14 +9,14 @@ const bgMusic = document.getElementById("bg-music");
 // Lista de preguntas con imágenes y número de pregunta
 const questions = [
     { number: 1, text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1, isTroll: false }, 
-    { number: 2, text: "Ya no me quieres...", img: "assets/final.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 2, next2: 0, isTroll: false },
+    { number: 2, text: "Ya no me quieres...", img: "assets/triste.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 2, next2: 0, isTroll: false },
     { number: 3, text: "¿Cómo andas el día de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 4, next2: 3, isTroll: false },
     { number: 4, text: "Recuerda que estoy aquí para ti y puedes contarme el por qué", img: "assets/5s.png", btn1: "Está bien, lo haré", btn2: "Lo pensaré", next1: 4, next2: 4, isTroll: false },
     { number: 5, text: "¿Cómo te ves el día de hoy?", img: "assets/4.png", btn1: "Linda", btn2: "Fea", next1: 5, next2: null, isTroll: true },
     { number: 6, text: "Como siempre 💖", img: "assets/5.png", btn1: "💖", btn2: "🖕", next1: 6, next2: 6, isTroll: false },
     { number: 7, text: "¿Y al final si iremos a cine?", img: "assets/5s.png", btn1: "Si", btn2: "No tengo tiempo", next1: 7, next2: 8, isTroll: false },
     { number: 8, text: "Esta bien, espero tu mensaje 😺", img: "assets/final.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
-    { number: 9, text: "Vale, entiendo 😔", img: "assets/final.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
+    { number: 9, text: "Vale, entiendo 😔", img: "assets/triste.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
     { number: 10, text: "Espero que tengas un lindo dia", img: "assets/final.png", btn1: "Dale", btn2: "No", next1: null, next2: null, isTroll: true }
 ];
 
@@ -28,8 +28,7 @@ let isTransitioning = false;
 const btn1OriginalPosition = { left: btn1.offsetLeft, top: btn1.offsetTop };
 const btn2OriginalPosition = { left: btn2.offsetLeft, top: btn2.offsetTop };
 
-// Función para cambiar la pregunta con delay
-// Función para cambiar la pregunta con delay
+
 function changeQuestion(nextIndex) {
     if (nextIndex === null || isTransitioning) return;
 
@@ -80,9 +79,10 @@ function changeQuestion(nextIndex) {
         if (currentQuestion === 10) { // Si es la última pregunta
             window.open("function-heart.html", "_blank", "width=600,height=400");
         } else {
-            changeQuestion(questions[currentQuestion].next1);
+            changeQuestion(q.next1);
         }
     };
+
     btn2.onclick = () => {
         if (q.isTroll) {
             moveButtonRandomly(btn2);
@@ -91,6 +91,7 @@ function changeQuestion(nextIndex) {
         }
     };
 }
+
 
 
 

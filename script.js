@@ -16,15 +16,15 @@ const questions = [
     },
     {
         text: "Ya no me quieres...",
-        img: "assets/imagen2.png",
+        img: "assets/2.png",
         btn1: { text: "Sí te quiero", next: 3 },
         btn2: { text: "No es eso...", next: 3 }
     },
     {
-        text: "Lo que me dijiste hace tiempo estaba bien",
-        img: "assets/imagen3.png",
-        btn1: { text: "Sí", next: 4 },
-        btn2: { text: "No", next: 4 }
+        text: "¿Como estas el día de hoy?",
+        img: "assets/3.png",
+        btn1: { text: "Bien", next: 4 },
+        btn2: { text: "Mal", next: 4 }
     },
     {
         text: "Sabía que dirías eso 💖",

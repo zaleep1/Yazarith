@@ -4,15 +4,14 @@ const questionNumber = document.getElementById("question-number");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 const clickSound = document.getElementById("click-sound");
-const bgMusic = document.getElementById("bg-music");
 
-// Guardamos la posición original del botón rojo (btn2)
-const originalBtn2Position = { left: btn2.offsetLeft, top: btn2.offsetTop };
+// Guardamos la posición original del botón rojo
+const originalBtn2X = btn2.getBoundingClientRect().left;
+const originalBtn2Y = btn2.getBoundingClientRect().top;
 
 // Lista de preguntas
 const questions = [
     { number: 1, text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1, isTroll: false }, 
-
     { number: 2, text: "Ya no me quieres...", img: "assets/final.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 2, next2: 0, isTroll: false },
     { number: 3, text: "¿Cómo andas el día de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 4, next2: 3, isTroll: false },
     { number: 4, text: "Recuerda que estoy aquí para ti y puedes contarme el por qué", img: "assets/5s.png", btn1: "Está bien, lo haré", btn2: "Lo pensaré", next1: 4, next2: 4, isTroll: false },
@@ -74,7 +73,7 @@ function changeQuestion(nextIndex) {
     };
 }
 
-// Mueve el botón al hacer click en preguntas troll
+// Mueve el botón cuando es pregunta troll
 function moveButtonRandomly(button) {
     const maxX = window.innerWidth - button.clientWidth - 20;
     const maxY = window.innerHeight - button.clientHeight - 20;
@@ -85,11 +84,11 @@ function moveButtonRandomly(button) {
     button.style.top = `${y}px`;
 }
 
-// Restablece btn2 a su posición original junto a btn1
+// Restablece btn2 a su posición original
 function resetButtonPosition(button) {
     button.style.position = "absolute";
-    button.style.left = `${originalBtn2Position.left}px`;
-    button.style.top = `${originalBtn2Position.top}px`;
+    button.style.left = `${originalBtn2X}px`;
+    button.style.top = `${originalBtn2Y}px`;
 }
 
 // Iniciar la primera pregunta

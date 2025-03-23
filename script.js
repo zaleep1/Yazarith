@@ -10,13 +10,16 @@ const questions = [
     { number: 1, text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1, isTroll: false }, 
     { number: 2, text: "Ya no me quieres...", img: "assets/triste.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 2, next2: 0, isTroll: false },
     { number: 3, text: "¿Cómo andas el día de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 4, next2: 3, isTroll: false },
-    { number: 4, text: "Recuerda que estoy aquí para ti y puedes contarme el por qué", img: "assets/5s.png", btn1: "Está bien, lo haré", btn2: "Lo pensaré", next1: 4, next2: 4, isTroll: false },
+    { number: 4, text: "Recuerda que estoy aquí para ti y puedes contarme el por qué", img: "assets/5s.png", btn1: "Está bien, lo haré", btn2: "Lo pensaré", next1: 10, next2: 10, isTroll: false },
     { number: 5, text: "¿Cómo te ves el día de hoy?", img: "assets/4.png", btn1: "Linda", btn2: "Fea", next1: 5, next2: null, isTroll: true },
     { number: 6, text: "Como siempre 💖", img: "assets/5.png", btn1: "💖", btn2: "🖕", next1: 6, next2: 6, isTroll: false },
     { number: 7, text: "¿Y al final si gustas ir a cine?", img: "assets/5s.png", btn1: "Si", btn2: "No tengo tiempo", next1: 7, next2: 8, isTroll: false },
     { number: 8, text: "Esta bien, espero tu mensaje 😺", img: "assets/2.png", btn1: "", btn2: "", next1: 9, next2: 9, isTroll: false, isMiniMsg: true },
     { number: 9, text: "Vale, entiendo 😔", img: "assets/triste.png", btn1: "", btn2: "", next1: 9, next2: 9, isTroll: false, isMiniMsg: true },
-    { number: 10, text: "Espero que tengas un lindo día", img: "assets/final.png", btn1: "Dale", btn2: "No", next1: 10, next2: null, isTroll: true }
+    { number: 10, text: "Espero que tengas un lindo día", img: "assets/final.png", btn1: "Dale", btn2: "No", next1: null, next2: null, isTroll: true },
+    { number: 11, text: "¿Si fuiste a misa hoy?", img: "assets/4.png", btn1: "Si", btn2: "No", next1: 10, next2: 11, isTroll: false },
+    { number: 12, text: "MalMal", img: "assets/triste.png", btn1: "", btn2: "", next1: 4, next2: 4, isTroll: false, isMiniMsg: true },
+    { number: 13, text: "Eso espero", img: "assets/5s.png", btn1: "", btn2: "", next1: 4, next2: 4, isTroll: false, isMiniMsg: true }
 ];
 
 // Estado actual

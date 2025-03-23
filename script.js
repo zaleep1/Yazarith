@@ -2,72 +2,48 @@ const questionText = document.getElementById("question-text");
 const questionImg = document.getElementById("question-img");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
-const finalImg = document.getElementById("final-img");
 const clickSound = document.getElementById("click-sound");
 const bgMusic = document.getElementById("bg-music");
 
-// 📌 Lista de preguntas con sus imágenes y respuestas
+// Lista de preguntas con sus imágenes
 const questions = [
-    {
-        text: "Hola",
-        img: "assets/inicio.png",
-        btn1: { text: "Hola", next: 2 },
-        btn2: { text: "Adiós", next: 1 }
-    },
-    {
-        text: "Ya no me quieres...",
-        img: "assets/2.png",
-        btn1: { text: "Sí te quiero", next: 3 },
-        btn2: { text: "No es eso...", next: 3 }
-    },
-    {
-        text: "¿Como estas el día de hoy?",
-        img: "assets/3.png",
-        btn1: { text: "Bien", next: 4 },
-        btn2: { text: "Mal", next: 4 }
-    },
-    {
-        text: "Sabía que dirías eso 💖",
-        img: "assets/final.png",
-        btn1: { text: "Reiniciar", next: 0 },
-        btn2: { text: "", next: null } // No hace nada
-    }
+    { text: "Hola", img: "assets/inicio.png", btn1: "Hola", btn2: "Adiós", next1: 2, next2: 1 },
+    { text: "Ya no me quieres...", img: "assets/final.png", btn1: "Sí te quiero", btn2: "No 😢", next1: 3, next2: 0 },
+    { text: "¿Como andas el dia de hoy?", img: "assets/2.png", btn1: "Bien", btn2: "Mal", next1: 5, next2: 4 },
+    { text: "¿Como te ves el dia de hoy?", img: "assets/3.png", btn1: "Linda", btn2: "Fea", next1: 5, next2: 5 },
+    { text: "Bueno... Adiós 😭", img: "assets/triste.png", btn1: "Reiniciar", btn2: "Cerrar", next1: 0, next2: null }
 ];
 
+// Estado actual
 let currentQuestion = 0;
 
-// 📌 Función para actualizar la pregunta
-function updateQuestion() {
+// Función para cambiar la pregunta
+function changeQuestion(nextIndex) {
+    if (nextIndex === null) return; // Si es null, no hace nada (Ejemplo: cerrar el juego)
+
+    currentQuestion = nextIndex;
     const q = questions[currentQuestion];
 
-    // Actualiza el texto y la imagen
-    questionText.textContent = q.text;
-    questionImg.src = q.img;
+    // Sonido de clic
+    clickSound.play();
 
-    // Botón 1
-    btn1.textContent = q.btn1.text;
-    btn1.onclick = () => {
-        if (q.btn1.next !== null) {
-            currentQuestion = q.btn1.next;
-            updateQuestion();
-        }
-    };
+    // Efecto de aparición
+    questionText.classList.remove("fade-in");
+    questionImg.classList.remove("fade-in");
+    setTimeout(() => {
+        questionText.textContent = q.text;
+        questionImg.src = q.img;
+        btn1.textContent = q.btn1;
+        btn2.textContent = q.btn2;
+        questionText.classList.add("fade-in");
+        questionImg.classList.add("fade-in");
+    }, 100); // Pequeño retraso para reiniciar animación
 
-    // Botón 2
-    if (q.btn2.text === "") {
-        btn2.style.display = "none"; // Oculta el botón si no hay respuesta
-    } else {
-        btn2.style.display = "inline-block";
-        btn2.textContent = q.btn2.text;
-        btn2.onclick = () => {
-            if (q.btn2.next !== null) {
-                currentQuestion = q.btn2.next;
-                updateQuestion();
-            }
-        };
-    }
+    // Asignar nuevas funciones a los botones
+    btn1.onclick = () => changeQuestion(q.next1);
+    btn2.onclick = () => changeQuestion(q.next2);
 }
 
-// 📌 Iniciar con la primera pregunta
-updateQuestion();
-
+// Iniciar la primera pregunta
+btn1.onclick = () => changeQuestion(questions[0].next1);
+btn2.onclick = () => changeQuestion(questions[0].next2);

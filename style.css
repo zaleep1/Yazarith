@@ -32,6 +32,7 @@ body {
   position: absolute;
   top: 500px; /* Ajusta para moverlo verticalmente */
   font-size: 16px;
+  left: 50%;
   text-align: center;
 }
 

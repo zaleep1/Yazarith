@@ -74,7 +74,7 @@ function changeQuestion(nextIndex) {
 
 btn1.onclick = () => {
     if (questions[currentQuestion].number === 10) { // Verifica si es la pregunta 10
-        window.location.href = "function-heart.html";
+        window.location.href = "https://zaleep1.github.io/Yazarith/function-heart.html";
     } else {
         changeQuestion(questions[currentQuestion].next1);
     }

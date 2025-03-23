@@ -86,6 +86,13 @@ function changeQuestion(nextIndex) {
     };
 }
 
+btn1.onclick = () => {
+    if (currentQuestion === 10) { // Si es la última pregunta
+        window.open("corazon.html", "_blank", "width=600,height=400");
+    } else {
+        changeQuestion(questions[currentQuestion].next1);
+    }
+};
 
 
 // Función para mover el botón aleatoriamente

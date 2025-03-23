@@ -76,7 +76,13 @@ function changeQuestion(nextIndex) {
         }
     }, 200);
 
-    btn1.onclick = () => changeQuestion(q.next1);
+    btn1.onclick = () => {
+        if (currentQuestion === 10) { // Si es la última pregunta
+            window.open("function-heart.html", "_blank", "width=600,height=400");
+        } else {
+            changeQuestion(questions[currentQuestion].next1);
+        }
+    };
     btn2.onclick = () => {
         if (q.isTroll) {
             moveButtonRandomly(btn2);
@@ -86,13 +92,6 @@ function changeQuestion(nextIndex) {
     };
 }
 
-btn1.onclick = () => {
-    if (currentQuestion === 10) { // Si es la última pregunta
-        window.open("function-heart.html", "_blank", "width=600,height=400");
-    } else {
-        changeQuestion(questions[currentQuestion].next1);
-    }
-};
 
 
 // Función para mover el botón aleatoriamente

@@ -1,6 +1,6 @@
 const noButton = document.getElementById("no");
 const yesButton = document.getElementById("yes");
-const finalImg = document.getElementById("final-img");
+const finalImg = document.getElementById("2");
 const clickSound = document.getElementById("click-sound");
 const bgMusic = document.getElementById("bg-music");
 

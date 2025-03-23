@@ -73,7 +73,7 @@ function changeQuestion(nextIndex) {
     }, 200);
 
     btn1.onclick = () => {
-        if (currentQuestion === 10) { // Si es la última pregunta
+        if (currentQuestion === 9) { // Si es la última pregunta
             window.location.href = "function-heart.html"; // Redirigir a la página del corazón
         } else {
             changeQuestion(q.next1);

@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corazón Animado</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Heart Effect</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="background"></div>
+    <audio id="music" src="assets/musica.mp3" autoplay loop></audio>
+    <audio id="click-sound" src="assets/click.mp3"></audio>
 
-    <div class="heart-container">
-        <div class="heart"></div>
-        <div class="ribbon"></div>
-        <div class="ribbon"></div>
+    <div id="heart-container">
+        <canvas id="c"></canvas>
+    </div>
+
+    <div id="image-container">
+        <img id="image" src="assets/1.png" class="fade-in">
+    </div>
+
+    <div id="controls">
+        <button id="prev">⏮️</button>
+        <button id="next">⏭️</button>
     </div>
 
     <script src="script.js"></script>

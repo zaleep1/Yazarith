@@ -39,17 +39,11 @@ function changeQuestion(nextIndex) {
     questionNumber.classList.remove("fade-in");
 
     setTimeout(() => {
-        questionNumber.textContent = Pregunta ${q.number};
+        questionNumber.textContent = `Pregunta ${q.number}`;
         questionText.textContent = q.text;
         questionImg.src = q.img;
         btn1.textContent = q.btn1;
         btn2.textContent = q.btn2;
-
-        if (q.isTroll) {
-            makeButtonMove(btn2); // Hace que el botón 2 se mueva si es un botón troll
-        } else {
-            resetButton(btn2); // Restaura su posición si no es troll
-        }
 
         setTimeout(() => {
             isTransitioning = false;
@@ -63,29 +57,27 @@ function changeQuestion(nextIndex) {
     }, 200);
 
     btn1.onclick = () => changeQuestion(q.next1);
-    btn2.onclick = () => changeQuestion(q.next2);
-}
-
-// Función para hacer que el botón se mueva
-function makeButtonMove(button) {
-    button.style.position = "absolute";
-
-    button.onmouseover = () => {
-        const x = Math.random() * (window.innerWidth - button.clientWidth);
-        const y = Math.random() * (window.innerHeight - button.clientHeight);
-        button.style.left = ${x}px;
-        button.style.top = ${y}px;
+    btn2.onclick = () => {
+        if (q.isTroll) {
+            moveButtonRandomly(btn2);
+        } else {
+            changeQuestion(q.next2);
+        }
     };
 }
 
-// Función para restaurar el botón
-function resetButton(button) {
-    button.style.position = "";
-    button.style.left = "";
-    button.style.top = "";
-    button.onmouseover = null;
+// Función para mover el botón cuando se presiona
+function moveButtonRandomly(button) {
+    const maxX = window.innerWidth - button.clientWidth - 20;
+    const maxY = window.innerHeight - button.clientHeight - 20;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    button.style.position = "absolute";
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
 }
 
 // Iniciar la primera pregunta
 btn1.onclick = () => changeQuestion(questions[0].next1);
 btn2.onclick = () => changeQuestion(questions[0].next2);
+

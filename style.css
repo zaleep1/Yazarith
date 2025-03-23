@@ -1,69 +1,73 @@
 body {
-  background: black;
-  color: #fff;
-  font-family: "Archivo Black", sans-serif;
-  font-size: 3em;
-  text-align: center;
-  scrollbar-width: none;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: url('assets/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
-.heart {
-  fill: red;
-  position: relative;
-  top: 5px;
-  width: 50px;
-  animation: pulse 1s ease infinite;
+.container {
+    position: relative;
+    margin-top: 50px;
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.3);
-  }
-  100% {
-    transform: scale(1);
-  }
+img {
+    width: 300px;
+    margin-bottom: 20px;
 }
 
-
-#question {
-  position: absolute;
-  top: 500px; /* Ajusta para moverlo verticalmente */
-  font-size: 16px;
-  left: 50%;
-  text-align: center;
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+    margin-top: 20px;
+    position: relative;
 }
 
 
-#heart {
-  position: relative; /* Contenedor relativo para posicionar elementos dentro */
-  width: 200px; /* Ajusta según el tamaño del corazón */
-  height: 180px; /* Ajusta según el tamaño del corazón */
-  margin: auto;
-  text-align: center;
-  font-size: 16px;
+button {
+    font-size: 24px;
+    padding: 15px 40px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
 }
 
-#heart span {
-  width: 100%;
-  display: block;
-  top: 50%;
-  z-index: 1;
+#yes, #no {
+    width: 120px; 
+    text-align: center;
 }
 
-#heart {
-  width: 100px;
-  height: 90px;
-  text-align: center;
-  font-size: 16px;
+#no {
+    background-color: red;
+    position: relative; /
+}
+#yes {
+    background-color: green;
 }
 
-#heart span {
-  width: 100%;
-  display: block;
-  left: 0;
-  right: 0;
-  z-index: 1;
+
+button:active {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+#final-img {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#final-img.animate {
+    width: 300px;
+    height: auto;
+    opacity: 1;
 }

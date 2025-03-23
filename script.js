@@ -1,6 +1,5 @@
 const questionText = document.getElementById("question-text");
 const questionImg = document.getElementById("question-img");
-const questionNumber = document.getElementById("question-number");
 const btn1 = document.getElementById("btn1");
 const btn2 = document.getElementById("btn2");
 const clickSound = document.getElementById("click-sound");

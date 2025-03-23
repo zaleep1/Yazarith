@@ -1,101 +1,58 @@
 body {
-    background: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-#heart {
-    position: relative;
-    width: 200px;
-    height: 180px;
-    text-align: center;
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  background: black;
+  color: #fff;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 3em;
+  text-align: center;
+  scrollbar-width: none;
 }
 
 .heart {
-    fill: red;
-    width: 150px;
-    animation: pulse 1s ease infinite;
+  fill: red;
+  position: relative;
+  top: 5px;
+  width: 50px;
+  animation: pulse 1s ease infinite;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+#heart {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  text-align: center;
+  font-size: 16px;
+  position: relative;
 }
 
-#question-container {
-    position: absolute;
-    top: 20%;
-    text-align: center;
-    width: 100%;
-    color: white;
+#heart span {
+  width: 100%;
+  display: block;
+  top: 50%;
+  z-index: 1;
 }
 
-#question-image {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
+#heart {
+  width: 100px;
+  height: 90px;
+  text-align: center;
+  font-size: 16px;
 }
 
-h1 {
-    font-size: 18px;
-}
-
-#button-container {
-    position: absolute;
-    bottom: 20%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-button {
-    width: 150px;
-    height: 50px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-button:hover {
-    transform: scale(1.1);
-}
-
-.green {
-    background: green;
-    color: white;
-}
-
-.red {
-    background: red;
-    color: white;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.fullscreen-block {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: transparent;
-    z-index: 100;
+#heart span {
+  width: 100%;
+  display: block;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }

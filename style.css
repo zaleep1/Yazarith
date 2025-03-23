@@ -6,12 +6,31 @@ body {
   text-align: center;
   scrollbar-width: none;
 }
-/* Centrar el corazón */
-#heart-container {
+/* Asegura que el corazón y el canvas estén juntos */
+#heart-wrapper {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Ajusta según necesidad */
+    height: 60vh;
+}
+
+/* Canvas de fondo */
+#c {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+/* Posiciona el contenido dentro del corazón */
+#heart-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 /* Diseño del corazón */
@@ -24,7 +43,6 @@ body {
     height: 200px;
     background: rgba(255, 0, 0, 0.8);
     border-radius: 50%;
-    position: relative;
     text-align: center;
     padding: 20px;
     color: white;
@@ -58,6 +76,7 @@ body {
     transform: translateY(0);
 }
 
+
 /* --------------------------------------------------------------------------- */
 .heart {
   fill: red;
@@ -78,14 +97,7 @@ body {
     transform: scale(1);
   }
 }
-#heart {
-  position: relative;
-  width: 100px;
-  height: 90px;
-  text-align: center;
-  font-size: 16px;
-  position: relative;
-}
+
 
 #heart span {
   width: 100%;
@@ -94,12 +106,7 @@ body {
   z-index: 1;
 }
 
-#heart {
-  width: 100px;
-  height: 90px;
-  text-align: center;
-  font-size: 16px;
-}
+
 
 #heart span {
   width: 100%;

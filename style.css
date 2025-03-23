@@ -28,10 +28,7 @@ body {
 }
 
 #question-container {
-  position: absolute;
-  top: 0%; /* Ajusta este valor según sea necesario */
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 100px;
   height: 90px;
   text-align: center;

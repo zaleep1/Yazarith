@@ -1,13 +1,3 @@
-window.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("background-music");
-    music.play().catch(() => {
-        console.log("Autoplay bloqueado, esperando interacción del usuario...");
-        document.addEventListener("click", () => {
-            music.play();
-        }, { once: true });
-    });
-});
-
 e = [];// trails
 h = [];// heart path
 O = c.width = innerWidth;

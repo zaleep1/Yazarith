@@ -6,8 +6,8 @@ const btn2 = document.getElementById("btn2");
 const clickSound = document.getElementById("click-sound");
 
 // Guardamos la posición original del botón rojo
-const originalBtn2X = btn2.getBoundingClientRect().left;
-const originalBtn2Y = btn2.getBoundingClientRect().top;
+const originalBtn2X = btn2.offsetLeft;
+const originalBtn2Y = btn2.offsetTop;
 
 // Lista de preguntas
 const questions = [
@@ -47,8 +47,9 @@ function changeQuestion(nextIndex) {
         btn1.textContent = q.btn1;
         btn2.textContent = q.btn2;
 
-        // Si no es pregunta troll, restablecer btn2
-        if (!q.isTroll) {
+        if (q.isTroll) {
+            moveButtonRandomly(btn2);
+        } else {
             resetButtonPosition(btn2);
         }
 
@@ -84,7 +85,7 @@ function moveButtonRandomly(button) {
     button.style.top = `${y}px`;
 }
 
-// Restablece btn2 a su posición original
+// Restablece btn2 a su posición original después de una pregunta troll
 function resetButtonPosition(button) {
     button.style.position = "absolute";
     button.style.left = `${originalBtn2X}px`;

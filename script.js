@@ -15,9 +15,9 @@ const questions = [
     { number: 5, text: "¿Cómo te ves el día de hoy?", img: "assets/4.png", btn1: "Linda", btn2: "Fea", next1: 5, next2: null, isTroll: true },
     { number: 6, text: "Como siempre 💖", img: "assets/5.png", btn1: "💖", btn2: "🖕", next1: 6, next2: 6, isTroll: false },
     { number: 7, text: "¿Y al final si iremos a cine?", img: "assets/5s.png", btn1: "Si", btn2: "No tengo tiempo", next1: 7, next2: 8, isTroll: false },
-    { number: 8, text: "Esta bien, espero tu mensaje 😺", img: "assets/final.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
+    { number: 8, text: "Esta bien, espero tu mensaje 😺", img: "assets/2.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
     { number: 9, text: "Vale, entiendo 😔", img: "assets/triste.png", btn1: "", btn2: "", next1: 9, next2: null, isTroll: false, isMiniMsg: true },
-    { number: 10, text: "Espero que tengas un lindo dia", img: "assets/final.png", btn1: "Dale", btn2: "No", next1: null, next2: null, isTroll: true }
+    { number: 10, text: "Espero que tengas un lindo dia", img: "assets/final.png", btn1: "Dale", btn2: "No", next1: 10, next2: null, isTroll: true }
 ];
 
 // Estado actual
@@ -46,7 +46,6 @@ function changeQuestion(nextIndex) {
     questionNumber.classList.remove("fade-in");
 
     setTimeout(() => {
-        questionNumber.textContent = `Pregunta ${q.number}`;
         questionText.textContent = q.text;
         questionImg.src = q.img;
         btn1.textContent = q.btn1;

@@ -26,6 +26,18 @@ body {
     transform: scale(1);
   }
 }
+
+#question-container {
+  position: absolute;
+  top: 30%; /* Ajusta este valor según sea necesario */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em; /* Ajusta el tamaño si es necesario */
+  z-index: 2;
+}
+
 #heart {
   position: relative;
   width: 100px;
